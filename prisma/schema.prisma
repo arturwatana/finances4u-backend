@@ -19,3 +19,12 @@ model User {
   createdAt String
   updatedAt String
 }
+
+model Transaction {
+  id String @unique @default(uuid())
+  name String
+  createdAt String
+  value Int 
+  userId String
+  transactionDate String
+}
