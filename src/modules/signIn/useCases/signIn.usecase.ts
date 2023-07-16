@@ -10,7 +10,7 @@ import { IPasswordHash } from 'src/utils/hashPassword/passwordHash.interface';
 import { JwtService } from '@nestjs/jwt';
 
 export type ResponseToken = {
-  acces_token: string;
+  access_token: string;
 };
 
 @Injectable()
@@ -39,6 +39,6 @@ export class SignInUseCase {
       ...user,
     };
     const token = await this.jwtService.signAsync(payload);
-    return { acces_token: token };
+    return { access_token: token };
   }
 }

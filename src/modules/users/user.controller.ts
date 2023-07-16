@@ -1,7 +1,8 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { CreateUserUseCase } from './useCases/create-user.usecase';
 import { IUserRepository } from './db/user.repository.interface';
 import { CreateUserSchemaDTO } from './entities/user.dto';
+import { AuthGuard } from '../providers/auth-guard.provider';
 
 @Controller('/users')
 export class UserController {
@@ -17,6 +18,7 @@ export class UserController {
   }
 
   @Get()
+  @UseGuards(AuthGuard)
   getUsers() {
     return this.userRepository.getAll();
   }

@@ -3,9 +3,10 @@ import { UserModule } from './modules/users/user.module';
 import { APP_PIPE } from '@nestjs/core';
 import { ZodValidationPipe } from 'nestjs-zod';
 import { SignInModule } from './modules/signIn/signIn.module';
+import { TransactionsModule } from './modules/transactions/transactions.module';
 
 @Module({
-  imports: [UserModule, SignInModule],
+  imports: [UserModule, SignInModule, TransactionsModule],
   controllers: [],
   providers: [
     {
