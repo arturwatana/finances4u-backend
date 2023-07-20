@@ -1,5 +1,5 @@
 import { randomUUID } from 'crypto';
-import * as dayjs from 'dayjs';
+const dayjs = require('dayjs');
 export type IUser = {
   name: string;
   email: string;

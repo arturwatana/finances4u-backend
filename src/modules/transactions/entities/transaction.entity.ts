@@ -1,5 +1,5 @@
 import { ITransaction } from '../dto/transaction.dto';
-import * as dayjs from 'dayjs';
+const dayjs = require('dayjs');
 import { randomUUID } from 'node:crypto';
 
 export class Transaction {

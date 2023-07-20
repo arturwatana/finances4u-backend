@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { IUserRepository } from '../db/user.repository.interface';
 import { IUser, User } from '../entities/user.entity';
-import * as dayjs from 'dayjs';
+const dayjs = require('dayjs');
 import { IPasswordHash } from 'src/utils/hashPassword/passwordHash.interface';
 
 @Injectable()
