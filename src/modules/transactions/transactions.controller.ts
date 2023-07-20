@@ -11,7 +11,7 @@ import { CreateTransactionUseCase } from './useCases/create-transaction.usecase'
 import { ITransaction } from './dto/transaction.dto';
 import { ITransactionRepository } from './db/transaction.repository.interface';
 
-type ReqProps = {
+export type ReqProps = {
   user: {
     sub: string;
   };
@@ -30,10 +30,8 @@ export class TransactionsController {
   }
 
   @Get()
-  //   @UseGuards(AuthGuard)
+  @UseGuards(AuthGuard)
   async getTransactionsById(@Request() req: ReqProps) {
-    return await this.transactionsRepository.getAll(
-      'e345b20f-8329-4167-b7e3-6aa60fcac02b',
-    );
+    return await this.transactionsRepository.getAll(req.user.sub);
   }
 }

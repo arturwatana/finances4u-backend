@@ -6,6 +6,7 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class UserPrismaRepository implements IUserRepository {
   constructor(private prisma: PrismaService) {}
+
   async create(data: User): Promise<User> {
     return await this.prisma.user.create({
       data,
@@ -21,5 +22,22 @@ export class UserPrismaRepository implements IUserRepository {
       },
     });
     return user || null;
+  }
+
+  async updateUser(data: User): Promise<User> {
+    const updatedUser = await this.prisma.user.update({
+      where: {
+        id: data.id,
+      },
+      data,
+    });
+    return updatedUser;
+  }
+  async findById(id: string): Promise<User | null> {
+    return await this.prisma.user.findFirst({
+      where: {
+        id,
+      },
+    });
   }
 }

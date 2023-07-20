@@ -6,6 +6,7 @@ import { IUserRepository } from './db/user.repository.interface';
 import { UserPrismaRepository } from './db/user.prisma.repository';
 import { IPasswordHash } from 'src/utils/hashPassword/passwordHash.interface';
 import { PasswordBcryptHash } from 'src/utils/hashPassword/passwordHash.bcrypt.implementation';
+import { UpdateUserUseCase } from './useCases/update-user.usecase';
 
 @Module({
   imports: [],
@@ -13,6 +14,7 @@ import { PasswordBcryptHash } from 'src/utils/hashPassword/passwordHash.bcrypt.i
   providers: [
     CreateUserUseCase,
     PrismaService,
+    UpdateUserUseCase,
     {
       provide: IUserRepository,
       useClass: UserPrismaRepository,
